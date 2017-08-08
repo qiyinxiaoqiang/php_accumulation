@@ -54,11 +54,11 @@ class Person {
 > * 静态属性 Static Properties
 > * 命名空间 Namespace
 > * Person类是否为final或者abstract
-> * 只要把类名"Person"传递给ReflectionClass就可以了：
-> * ```php 
+> * 只要把类名"Person"传递给ReflectionClass就可以了:
+```php 
 $class = new ReflectionClass('Person');
-
-> *获取属性(Properties)：
+```
+> *	获取属性(Properties)：
 ```php
 <?php
 $properties = $class->getProperties();
@@ -87,8 +87,7 @@ ReflectionProperty::IS_PUBLIC
 ReflectionProperty::IS_PROTECTED
 ReflectionProperty::IS_PRIVATE
 ```
-###	如果要同时获取public 和private 属性，就这样写：ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED
-应该不会感觉陌生吧。
+###	如果要同时获取public 和private 属性，就这样写：ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED 应该不会感觉陌生吧。
 > *	通过$property->getName()可以得到属性名，通过getDocComment可以得到写给property的注释。
 
 ```php
