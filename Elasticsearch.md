@@ -1,6 +1,6 @@
-#Elasticsearchæœç´¢
-###ä¸­æ–‡ç‰ˆï¼šhttps://es.xiaoleilu.com/
--å‚è€ƒï¼š
+#ElasticsearchËÑË÷
+###ÖÐÎÄ°æ£ºhttps://es.xiaoleilu.com/
+-²Î¿¼£º
 ```base
 http://www.cnblogs.com/amuge/p/6076232.html
 http://www.jianshu.com/p/eb30eee13923
@@ -9,7 +9,7 @@ http://blog.csdn.net/dm_vincent/article/details/41842691
 ```
 
 
->*	åˆ—ä¸¾ï¼š
+>*	ÁÐ¾Ù£º
 
 ```php
 <?php
@@ -33,7 +33,7 @@ $json = '{
 				{ "match_phrase": { "monitor.del.is":  "n" }}
 			]
 		}
-	},//form:åˆ†é¡µ,match_phrase:æŒ‡å®šçš„æ¡ä»¶,multi_matchï¼šæŸ¥è¯¢æä¾›äº†ä¸€ä¸ªç®€ä¾¿çš„æ–¹æ³•ç”¨æ¥å¯¹å¤šä¸ªå­—æ®µæ‰§è¡Œç›¸åŒçš„æŸ¥è¯¢ï¼ˆqueryï¼šæŸ¥è¯¢çš„å†…å®¹ï¼Œtypeï¼šåŒ…å«best_fieldsï¼Œmost_fieldsï¼Œcross_fieldsï¼Œphraseï¼Œphrase_prefixï¼‰è¯¦è§d1,fields:éœ€æŸ¥è¯¢çš„å­—æ®µ,operator:è¯¥å‚æ•°çš„é»˜è®¤å€¼æ˜¯"or"ã€‚ä½ å¯ä»¥å°†å®ƒæ”¹å˜ä¸º"and"æ¥è¦æ±‚æ‰€æœ‰çš„è¯æ¡éƒ½éœ€è¦è¢«åŒ¹é…
+	},//form:·ÖÒ³,match_phrase:Ö¸¶¨µÄÌõ¼þ,multi_match£º²éÑ¯Ìá¹©ÁËÒ»¸ö¼ò±ãµÄ·½·¨ÓÃÀ´¶Ô¶à¸ö×Ö¶ÎÖ´ÐÐÏàÍ¬µÄ²éÑ¯£¨query£º²éÑ¯µÄÄÚÈÝ£¬type£º°üº¬best_fields£¬most_fields£¬cross_fields£¬phrase£¬phrase_prefix£©Ïê¼ûd1,fields:Ðè²éÑ¯µÄ×Ö¶Î,operator:¸Ã²ÎÊýµÄÄ¬ÈÏÖµÊÇ"or"¡£Äã¿ÉÒÔ½«Ëü¸Ä±äÎª"and"À´ÒªÇóËùÓÐµÄ´ÊÌõ¶¼ÐèÒª±»Æ¥Åä
 	"highlight" : {
 		"pre_tags" : ["<em class=\"search_word\">"],
 		"post_tags" : ["</em>"],
@@ -41,7 +41,7 @@ $json = '{
 			"title" : {},
 			"body": {}
 		}
-	}//highlight:å­—æ®µé«˜äº®è®¾ç½®
+	}//highlight:×Ö¶Î¸ßÁÁÉèÖÃ
 }';
 $arr = [
 	'index' => 'v5_uc',
@@ -58,19 +58,19 @@ $client = Elasticsearch::create()->setHosts(self::$host)->build();
 ###d1:
 ```base
 
-å†…éƒ¨æ‰§è¡Œmulti_matchæŸ¥è¯¢çš„æ–¹å¼ä¾èµ–äºŽtypeå‚æ•°ï¼Œå®ƒå¯ä»¥è¢«è®¾ç½®æˆï¼š
+ÄÚ²¿Ö´ÐÐmulti_match²éÑ¯µÄ·½Ê½ÒÀÀµÓÚtype²ÎÊý£¬Ëü¿ÉÒÔ±»ÉèÖÃ³É£º
 
-ã€€ã€€best_fields  ã€€ã€€ï¼ˆé»˜è®¤ï¼‰æŸ¥æ‰¾ä¸Žä»»ä½•å­—æ®µåŒ¹é…çš„æ–‡æ¡£ï¼Œä½†ä½¿ç”¨æœ€ä½³å­—æ®µä¸­çš„_scoreã€‚çœ‹best_fields.
+¡¡¡¡best_fields  ¡¡¡¡£¨Ä¬ÈÏ£©²éÕÒÓëÈÎºÎ×Ö¶ÎÆ¥ÅäµÄÎÄµµ£¬µ«Ê¹ÓÃ×î¼Ñ×Ö¶ÎÖÐµÄ_score¡£¿´best_fields.
 
-ã€€ã€€most_fieldsã€€ã€€æŸ¥æ‰¾ä¸Žä»»ä½•å­—æ®µåŒ¹é…çš„æ–‡æ¡£ï¼Œå¹¶è”åˆæ¯ä¸ªå­—æ®µçš„_score.
+¡¡¡¡most_fields¡¡¡¡²éÕÒÓëÈÎºÎ×Ö¶ÎÆ¥ÅäµÄÎÄµµ£¬²¢ÁªºÏÃ¿¸ö×Ö¶ÎµÄ_score.
 
-ã€€ã€€cross_fieldsã€€ã€€é‡‡ç”¨ç›¸åŒåˆ†æžå™¨å¤„ç†å­—æ®µï¼Œå°±å¥½åƒä»–ä»¬æ˜¯ä¸€ä¸ªå¤§çš„å­—æ®µã€‚åœ¨æ¯ä¸ªå­—æ®µä¸­æŸ¥æ‰¾æ¯ä¸ªå•è¯ã€‚çœ‹cross_fieldsã€‚
+¡¡¡¡cross_fields¡¡¡¡²ÉÓÃÏàÍ¬·ÖÎöÆ÷´¦Àí×Ö¶Î£¬¾ÍºÃÏñËûÃÇÊÇÒ»¸ö´óµÄ×Ö¶Î¡£ÔÚÃ¿¸ö×Ö¶ÎÖÐ²éÕÒÃ¿¸öµ¥´Ê¡£¿´cross_fields¡£
 
-ã€€ã€€phraseã€€ã€€ã€€ã€€åœ¨æ¯ä¸ªå­—æ®µä¸Šè¿è¡Œmatch_phraseæŸ¥è¯¢å¹¶å’Œæ¯ä¸ªå­—æ®µçš„_scoreç»„åˆã€‚çœ‹phrase and phrase_prefixã€‚
+¡¡¡¡phrase¡¡¡¡¡¡¡¡ÔÚÃ¿¸ö×Ö¶ÎÉÏÔËÐÐmatch_phrase²éÑ¯²¢ºÍÃ¿¸ö×Ö¶ÎµÄ_score×éºÏ¡£¿´phrase and phrase_prefix¡£
 
-ã€€ã€€phrase_prefix    åœ¨æ¯ä¸ªå­—æ®µä¸Šè¿è¡Œmatch_phrase_prefixæŸ¥è¯¢å¹¶å’Œæ¯ä¸ªå­—æ®µçš„_scoreç»„åˆã€‚çœ‹phrase and phrase_prefixã€‚
+¡¡¡¡phrase_prefix    ÔÚÃ¿¸ö×Ö¶ÎÉÏÔËÐÐmatch_phrase_prefix²éÑ¯²¢ºÍÃ¿¸ö×Ö¶ÎµÄ_score×éºÏ¡£¿´phrase and phrase_prefix¡£
 
 best_fields
 
-ã€€ã€€å½“ä½ åœ¨åŒä¸€ä¸ªå­—æ®µä¸­æœç´¢æœ€ä½³æŸ¥æ‰¾çš„å¤šä¸ªå•è¯æ—¶ï¼Œbese_fieldsç±»åž‹æ˜¯æœ€æœ‰æ•ˆçš„ã€‚ä¾‹å¦‚ï¼Œ"brown fox"å•ç‹¬åœ¨ä¸€ä¸ªå­—æ®µä¸­æ¯”"brown"åœ¨ä¸€ä¸ªå­—æ®µä¸­å’Œ"for"åœ¨å¦å¤–ä¸€ä¸ªå­—æ®µä¸­æ›´æœ‰æ„ä¹‰ã€‚
+¡¡¡¡µ±ÄãÔÚÍ¬Ò»¸ö×Ö¶ÎÖÐËÑË÷×î¼Ñ²éÕÒµÄ¶à¸öµ¥´ÊÊ±£¬bese_fieldsÀàÐÍÊÇ×îÓÐÐ§µÄ¡£ÀýÈç£¬"brown fox"µ¥¶ÀÔÚÒ»¸ö×Ö¶ÎÖÐ±È"brown"ÔÚÒ»¸ö×Ö¶ÎÖÐºÍ"for"ÔÚÁíÍâÒ»¸ö×Ö¶ÎÖÐ¸üÓÐÒâÒå¡£
 ```
