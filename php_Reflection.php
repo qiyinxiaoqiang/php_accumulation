@@ -1,6 +1,9 @@
-PHP5添加了一项新的功能：Reflection。这个功能使得程序员可以reverse-engineer class, interface,function,method and extension。通过PHP代码，就可以得到某object的所有信息，并且可以和它交互。
-假设有一个类Person：
-class Person {   
+
+#Reflection反射
+###PHP5添加了一项新的功能：`Reflection`。
+> *这个功能使得程序员可以reverse-engineer class, interface,function,method and extension。通过PHP代码，就可以得到某object的所有信息，并且可以和它交互。
+> * ```php假设有一个类Person：
+```bash class Person {   
 	/** 
      * For the sake of demonstration, we"re setting this private
      */ 
@@ -40,19 +43,21 @@ class Person {
          	$this->biography = $v;
         }
 }
-
-通过ReflectionClass，我们可以得到Person类的以下信息：
-常量 Contants
-属性 Property Names
-方法 Method Names
-静态属性 Static Properties
-命名空间 Namespace
-Person类是否为final或者abstract
-只要把类名"Person"传递给ReflectionClass就可以了：
+```
+> * 通过ReflectionClass，我们可以得到Person类的以下信息：
+> * 常量 Contants
+> * 属性 Property Names
+> * 方法 Method Names
+> * 静态属性 Static Properties
+> * 命名空间 Namespace
+> * Person类是否为final或者abstract
+> * 只要把类名"Person"传递给ReflectionClass就可以了：
+> * ```php 
 $class = new ReflectionClass('Person');
 
+> *
 获取属性(Properties)：
-
+```bash
 $properties = $class->getProperties();
 foreach($properties as $property) {
     echo $property->getName()."\n";
@@ -62,24 +67,27 @@ foreach($properties as $property) {
 // id
 // name
 // biography
+```
+
+###默认情况下，ReflectionClass会获取到所有的属性，private 和 protected的也可以。如果只想获取到private属性，就要额外传个参数：
 
 
-默认情况下，ReflectionClass会获取到所有的属性，private 和 protected的也可以。如果只想获取到private属性，就要额外传个参数：
-
-
+```php
 $private_properties = $class->getProperties(ReflectionProperty::IS_PRIVATE);
+```
 
-
-可用参数列表：
+> *可用参数列表：
+```php
 ReflectionProperty::IS_STATIC
 ReflectionProperty::IS_PUBLIC
 ReflectionProperty::IS_PROTECTED
 ReflectionProperty::IS_PRIVATE
-如果要同时获取public 和private 属性，就这样写：ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED
+```
+###如果要同时获取public 和private 属性，就这样写：ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED
 应该不会感觉陌生吧。
-通过$property->getName()可以得到属性名，通过getDocComment可以得到写给property的注释。
+> *通过$property->getName()可以得到属性名，通过getDocComment可以得到写给property的注释。
 
-
+```php
 foreach($properties as $property) {
     if($property->isProtected()) {
         $docblock = $property->getDocComment();
@@ -87,15 +95,16 @@ foreach($properties as $property) {
         echo $matches[1]."\n";
     }
 }
+
 // Output:
 // primary_autoincrement
 // varchar
 // text
-
-有点不可思议了吧。竟然连注释都可以取到。
-获取方法(methods)：通过getMethods() 来获取到类的所有methods。返回的是ReflectionMethod对象的数组。不再演示。
-最后通过ReflectionMethod来调用类里面的method。
-
+```
+> *有点不可思议了吧。竟然连注释都可以取到。
+> *获取方法(methods)：通过getMethods() 来获取到类的所有methods。返回的是ReflectionMethod对象的数组。不再演示。
+> *最后通过ReflectionMethod来调用类里面的method。
+```php
 $data = array("id" => 1, "name" => "Chris", "biography" => "I am am a PHP developer");
 foreach($data as $key => $value) {
     if(!$class->hasProperty($key)) {
@@ -129,5 +138,5 @@ foreach($data as $key => $value) {
    }
 }
 
-
+```
 
