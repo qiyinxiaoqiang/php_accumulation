@@ -2,8 +2,10 @@
 #	Reflection反射
 ###	PHP5添加了一项新的功能：`Reflection`。
 > 这个功能使得程序员可以reverse-engineer class, interface,function,method and extension。通过PHP代码，就可以得到某object的所有信息，并且可以和它交互。
-> 假设有一个类Person：
-```bash class Person {   
+假设有一个类Person：
+```php
+<?php
+class Person {   
 	/** 
      * For the sake of demonstration, we"re setting this private
      */ 
@@ -43,6 +45,7 @@
          	$this->biography = $v;
         }
 }
+?>
 ```
 > * 通过ReflectionClass，我们可以得到Person类的以下信息：
 > * 常量 Contants
