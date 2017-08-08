@@ -1,6 +1,6 @@
-#Elasticsearch搜索
-###中文版：https://es.xiaoleilu.com/
--参考：
+#	Elasticsearch搜索
+###	中文版：https://es.xiaoleilu.com/
+>*参考：
 ```base
 http://www.cnblogs.com/amuge/p/6076232.html
 http://www.jianshu.com/p/eb30eee13923
@@ -47,7 +47,7 @@ $arr = [
 	'index' => 'v5_uc',
 	'type' => '_search',
 	'body' => $json
-];
+];//index:索引 type:类型
 $client = Elasticsearch::create()->setHosts(self::$host)->build();
 
 ?>
@@ -55,7 +55,7 @@ $client = Elasticsearch::create()->setHosts(self::$host)->build();
 
 ```
 
-###d1:
+###	d1:
 ```base
 
 内部执行multi_match查询的方式依赖于type参数，它可以被设置成：
