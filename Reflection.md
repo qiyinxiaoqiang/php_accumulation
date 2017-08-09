@@ -16,7 +16,7 @@ class Person {
  
     /** type=varchar length=255 null */
     protected $name;
- 
+  
     /** type=text null */ 
     protected $biography;
  
