@@ -50,7 +50,9 @@ $arr = [
 	'body' => $json
 ];//index:索引 type:类型
 $client = Elasticsearch::create()->setHosts(self::$host)->build();
-
+$response = $client->index($arr);
+$count = $response['hits']['total'];//查询的总条数
+$data = $response['hits']['hits'];//数组数据内容
 ?>
 
  
